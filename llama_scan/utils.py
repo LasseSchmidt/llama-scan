@@ -59,7 +59,7 @@ def pdf_to_images(
         page = doc[page_num - 1]  # Convert to 0-based index
         pix = page.get_pixmap()
         img = Image.open(io.BytesIO(pix.tobytes("png")))
-        n_digits = int(np.ceil(np.log10(total_pages)))
+        n_digits = len(str(total_pages))
         output_path = output_dir / f"page_{page_num:0{n_digits}d}.png"
         img.save(str(output_path))
 
